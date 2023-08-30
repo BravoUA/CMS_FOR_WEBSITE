@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1;
+using CMS_FOR_WEBSITE;
 
 namespace CMS_FOR_WEBSITE
 {

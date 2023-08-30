@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace CMS_FOR_WEBSITE
 {
     partial class Edite
     {

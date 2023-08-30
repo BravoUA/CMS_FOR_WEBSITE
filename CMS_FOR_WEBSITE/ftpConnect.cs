@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace WindowsFormsApp1
+namespace CMS_FOR_WEBSITE
 {
     class ftpConnect
     {

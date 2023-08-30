@@ -9,10 +9,11 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
-using WindowsFormsApp1;
 
-namespace WindowsFormsApp1
+using CMS_FOR_WEBSITE;
+using CMS_FOR_WEBSITE.Models;
+
+namespace CMS_FOR_WEBSITE
 {
     public partial class Delete : Form
     {
@@ -22,9 +23,12 @@ namespace WindowsFormsApp1
         }
 
     
-        DataSet dataSet = new DataSet();
+        
         ImageList img = new ImageList();
         dbConnect DBCON = new dbConnect(dbPath);
+        List<FildType> fildTypes = new List<FildType>();  
+        List<MachineryModel> machineries = new List<MachineryModel>();
+
         string[] ImgName;
         string[] ImgNamePaths;
         static string dbPath = "C:\\AnnalandBD\\ALDB.db";
@@ -42,6 +46,7 @@ namespace WindowsFormsApp1
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
             DBCON.FindByType(comboBox1.SelectedIndex.ToString(), Categories);
+            var sortByFildtype = ()
             if (Categories == 1)
             {
                 DataTable AllTr = DBCON.dataSet.Tables["Machinery"];
@@ -81,12 +86,6 @@ namespace WindowsFormsApp1
             
 
         }
-
-     
-        
-
-
-
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -202,6 +201,7 @@ namespace WindowsFormsApp1
            
           
         }
+
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedCells.Count > 0 && button5.Visible== false)
@@ -294,10 +294,13 @@ namespace WindowsFormsApp1
 
         private void Delete_Load(object sender, EventArgs e)
         {
+
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
-
+            fildTypes = DBCON.FildType.ToList();
+            machineries = DBCON.Machinery.ToList();
         }
+
         private void button3_Click(object sender, EventArgs e)
         {
             button1.Visible = true;
