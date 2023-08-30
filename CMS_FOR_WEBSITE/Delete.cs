@@ -22,11 +22,11 @@ namespace CMS_FOR_WEBSITE
             InitializeComponent();
         }
 
-    
-        
+
+
         ImageList img = new ImageList();
         dbConnect DBCON = new dbConnect(dbPath);
-        List<FildType> fildTypes = new List<FildType>();  
+        List<FildType> fildTypes = new List<FildType>();
         List<MachineryModel> machineries = new List<MachineryModel>();
 
         string[] ImgName;
@@ -35,10 +35,10 @@ namespace CMS_FOR_WEBSITE
         string HadImg;
         string HadImgPath;
         int Categories = 0;
-       public DataTable AllTr;
+        public DataTable AllTr;
         string Name, Model, Year, Type, Working_hours, Power, Mass, Text, State;
 
-        int Price, FildType, IDM, Sale, id, DeleteId , DeleteIdBUT;
+        int Price, FildType, IDM, Sale, id, DeleteId, DeleteIdBUT;
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -46,7 +46,7 @@ namespace CMS_FOR_WEBSITE
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
             DBCON.FindByType(comboBox1.SelectedIndex.ToString(), Categories);
-            var sortByFildtype = ()
+            var sortByFildtype = (from f in machineries where f.FildType == comboBox1.SelectedIndex select f);
             if (Categories == 1)
             {
                 DataTable AllTr = DBCON.dataSet.Tables["Machinery"];
@@ -64,9 +64,9 @@ namespace CMS_FOR_WEBSITE
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-           
-            
-            
+
+
+
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
             DBCON.FindByName(textBox1.Text, Categories);
@@ -74,16 +74,16 @@ namespace CMS_FOR_WEBSITE
             {
                 DataTable AllTr = DBCON.dataSet.Tables["Machinery"];
                 dataGridView1.DataSource = AllTr;
-               
+
             }
             else if (Categories == 2)
             {
                 DataTable AllTr = DBCON.dataSet.Tables["Technic"];
-               
+
                 dataGridView1.DataSource = AllTr;
-               
+
             }
-            
+
 
         }
 
@@ -198,13 +198,13 @@ namespace CMS_FOR_WEBSITE
                 }
             }
 
-           
-          
+
+
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedCells.Count > 0 && button5.Visible== false)
+            if (dataGridView1.SelectedCells.Count > 0 && button5.Visible == false)
             {
                 int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
@@ -214,7 +214,8 @@ namespace CMS_FOR_WEBSITE
                 DeleteId = int.Parse(cellValue);
                 int DeleteIdFildType = int.Parse(cellValue2);
 
-                switch (DeleteIdFildType) { 
+                switch (DeleteIdFildType)
+                {
                     case 1:
                         System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=M&id='" + DeleteId + "'#Back");
                         break;
@@ -248,7 +249,7 @@ namespace CMS_FOR_WEBSITE
 
         private void button4_Click(object sender, EventArgs e)
         {
-    
+
             Edite EditForm = new Edite();
 
             if (Categories == 1)
@@ -286,8 +287,8 @@ namespace CMS_FOR_WEBSITE
                 EditForm.Show();
                 this.Close();
             }
-            
-        
+
+
 
 
         }
@@ -308,11 +309,11 @@ namespace CMS_FOR_WEBSITE
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
             DBCON.getCategories(2);
-            DataTable AllTr = DBCON.dataSet.Tables["Technic"];
-            dataGridView1.DataSource = AllTr;       
+            DataTable AllTr = DBCON.dataSet.Tables["Technic"
+            dataGridView1.DataSource = ;
             Categories = 2;
 
-            string[] installs = new string[] { "Картопляна техніка", "Техніка для обробка грунту", "Посівна та садильна техніка", "Техніка для внесення добрив", "Інша техніка"};
+            string[] installs = new string[] { "Картопляна техніка", "Техніка для обробка грунту", "Посівна та садильна техніка", "Техніка для внесення добрив", "Інша техніка" };
             comboBox1.Items.Clear();
             comboBox1.Items.AddRange(installs);
         }
@@ -324,20 +325,21 @@ namespace CMS_FOR_WEBSITE
             button4.Visible = true;
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
-            DBCON.getCategories(1);
-            AllTr = DBCON.dataSet.Tables["Machinery"];
-            dataGridView1.DataSource = AllTr;          
+
+
+            
+            dataGridView1.DataSource = machineries;
             Categories = 1;
             string[] installs = new string[] { "Трактори", "Спецтехніка" };
             comboBox1.Items.Clear();
             comboBox1.Items.AddRange(installs);
-                }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Visible = false;
             button4.Visible = false;
-           
+
             if (dataGridView1.SelectedCells.Count > 0)
             {
                 int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
@@ -345,13 +347,15 @@ namespace CMS_FOR_WEBSITE
                 string cellValue = Convert.ToString(selectedRow.Cells["id"].Value);
                 DeleteId = int.Parse(cellValue);
             }
-            if (Categories == 1) {
+            if (Categories == 1)
+            {
                 DBCON.deleteFromDB(Categories, DeleteId);
                 dataGridView1.DataSource = null;
                 dataGridView1.Refresh();
                 this.Refresh();
             }
-            else if(Categories == 2) {
+            else if (Categories == 2)
+            {
                 DBCON.deleteFromDB(Categories, DeleteId);
                 dataGridView1.DataSource = null;
                 dataGridView1.Refresh();
