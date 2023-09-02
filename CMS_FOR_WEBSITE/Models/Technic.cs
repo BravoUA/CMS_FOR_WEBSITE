@@ -1,6 +1,6 @@
 ﻿namespace CMS_FOR_WEBSITE.Models
 {
-    public class TechnicModel
+    public class Technic
     {
         public string Name { get; set; }
         public string Model { get; set; }

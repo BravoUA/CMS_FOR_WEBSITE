@@ -24,7 +24,7 @@ namespace CMS_FOR_WEBSITE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            Create form = new Create();
             form.Login = login;
             form.Paswword = paswword;
             form.Host = host;

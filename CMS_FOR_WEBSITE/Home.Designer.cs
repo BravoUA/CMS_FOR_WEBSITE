@@ -29,158 +29,169 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Login = new System.Windows.Forms.TextBox();
-            this.Paswword = new System.Windows.Forms.TextBox();
-            this.Host = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            button1 = new Button();
+            button2 = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            Login = new TextBox();
+            Paswword = new TextBox();
+            Host = new TextBox();
+            button3 = new Button();
+            button4 = new Button();
+            SuspendLayout();
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 70);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Додати";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.BackColor = SystemColors.ControlLightLight;
+            button1.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(14, 14);
+            button1.Margin = new Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(175, 81);
+            button1.TabIndex = 0;
+            button1.Text = "Додати";
+            button1.UseVisualStyleBackColor = false;
+            button1.Visible = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Window;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(168, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(282, 70);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Видалити + Редагувати";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.BackColor = SystemColors.Window;
+            button2.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(196, 14);
+            button2.Margin = new Padding(4, 3, 4, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(329, 81);
+            button2.TabIndex = 1;
+            button2.Text = "Видалити + Редагувати";
+            button2.UseVisualStyleBackColor = false;
+            button2.Visible = false;
+            button2.Click += button2_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(8, 92);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Login";
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(9, 106);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(53, 20);
+            label1.TabIndex = 2;
+            label1.Text = "Login";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(8, 120);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Paswword";
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(9, 138);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(89, 20);
+            label2.TabIndex = 3;
+            label2.Text = "Paswword";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(8, 145);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Host";
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(9, 167);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(47, 20);
+            label3.TabIndex = 4;
+            label3.Text = "Host";
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(101, 94);
-            this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(211, 20);
-            this.Login.TabIndex = 5;
+            Login.Location = new Point(118, 108);
+            Login.Margin = new Padding(4, 3, 4, 3);
+            Login.Name = "Login";
+            Login.Size = new Size(245, 23);
+            Login.TabIndex = 5;
+            Login.Text = "sa246943_CMS";
             // 
             // Paswword
             // 
-            this.Paswword.Location = new System.Drawing.Point(101, 120);
-            this.Paswword.Name = "Paswword";
-            this.Paswword.Size = new System.Drawing.Size(211, 20);
-            this.Paswword.TabIndex = 6;
+            Paswword.Location = new Point(118, 138);
+            Paswword.Margin = new Padding(4, 3, 4, 3);
+            Paswword.Name = "Paswword";
+            Paswword.Size = new Size(245, 23);
+            Paswword.TabIndex = 6;
+            Paswword.Text = "9uJ5a4tNV2";
             // 
             // Host
             // 
-            this.Host.Location = new System.Drawing.Point(101, 145);
-            this.Host.Name = "Host";
-            this.Host.Size = new System.Drawing.Size(211, 20);
-            this.Host.TabIndex = 7;
+            Host.Location = new Point(118, 167);
+            Host.Margin = new Padding(4, 3, 4, 3);
+            Host.Name = "Host";
+            Host.Size = new Size(245, 23);
+            Host.TabIndex = 7;
+            Host.Text = "sa246943.ftp.tools";
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(347, 94);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 46);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Connect";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Location = new Point(405, 108);
+            button3.Margin = new Padding(4, 3, 4, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(120, 53);
+            button3.TabIndex = 8;
+            button3.Text = "Connect";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(347, 143);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Upload DB";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            button4.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Location = new Point(405, 165);
+            button4.Margin = new Padding(4, 3, 4, 3);
+            button4.Name = "button4";
+            button4.Size = new Size(120, 27);
+            button4.TabIndex = 9;
+            button4.Text = "Upload DB";
+            button4.UseVisualStyleBackColor = true;
+            button4.Visible = false;
+            button4.Click += button4_Click;
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(463, 178);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.Host);
-            this.Controls.Add(this.Paswword);
-            this.Controls.Add(this.Login);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Home";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Home";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
-            this.Load += new System.EventHandler(this.Home_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.SkyBlue;
+            ClientSize = new Size(540, 205);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(Host);
+            Controls.Add(Paswword);
+            Controls.Add(Login);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "Home";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Home";
+            FormClosing += Home_FormClosing;
+            Load += Home_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox Login;
-        private System.Windows.Forms.TextBox Paswword;
-        private System.Windows.Forms.TextBox Host;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private Button button1;
+        private Button button2;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private TextBox Login;
+        private TextBox Paswword;
+        private TextBox Host;
+        private Button button3;
+        private Button button4;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CMS_FOR_WEBSITE.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,52 +21,64 @@ namespace CMS_FOR_WEBSITE
         static string dbPath = "C:\\AnnalandBD\\ALDB.db";
         dbConnect DB = new dbConnect(dbPath);
         public DataTable AllTr;
-        public DataSet DS = new DataSet();
+        public Machinery machinery = new Machinery();
+        public Technic technic = new Technic();
         public int Categories;
-        int ID;
-        string IDM, IDT, SALE;
+        int ID, IDM, IDT, SALE;
+
         private void button1_Click(object sender, EventArgs e)
         {
-            List<string> content = new List<string>();
+            int zer = 0;
+            int.TryParse(Price.Text, out zer);
             if (Categories == 1)
             {
-                content.Add(NamePos.Text);     //Nmae
-                content.Add(Model.Text);     //Model
-                content.Add(Year.Text);     //Year
-                content.Add(Type.Text);     //Type
-                content.Add(Working_hours.Text);     //Working_hours
-                content.Add(Power.Text);     //Power
-                content.Add(Mass.Text);     //Mass
-                content.Add(TextInfo.Text);     //Text
-                content.Add(comboBox2.Text);    //State
-                content.Add(Price.Text);    //Price
-                content.Add((comboBox1.SelectedIndex + 1).ToString());  //FildType
-                content.Add(IDM);
-                content.Add(SALE);
-                content.Add(ID.ToString());
+                Machinery editM = new Machinery()
+            {
+                Name = NamePos.Text,
+                Model = Model.Text,
+                Year = Year.Text,
+                Type = Type.Text,
+                Working_hours = Working_hours.Text,
+                Power = Power.Text,
+                Mass = Mass.Text,
+                Text = TextInfo.Text,
+                State = comboBox2.Text,
 
+                Price = zer,
+                FildType = comboBox1.SelectedIndex,
+                IDM = IDM,
+                Sale = SALE,
+                id = ID
+            };
+                DB.Machinery.Update(editM);
 
-                DB.insertToDB(Categories, ID, content);       
+                DB.SaveChanges();
+       
                 MessageBox.Show("upload is complete");
                 this.Close();
             }
             if (Categories == 2)
             {
-                content.Add(NamePos.Text);     //Nmae
-                content.Add(Model.Text);     //Model
-                content.Add(Year.Text);     //Year
-                content.Add(Type.Text);     //Type
-                content.Add(TextInfo.Text);     //Text
-                content.Add(Mass.Text);     //Mass
-                content.Add(comboBox2.Text);    //State
-                content.Add(Price.Text);    //Price
-                content.Add((comboBox1.SelectedIndex + 1).ToString());  //FildType
-                content.Add(IDT);
-                content.Add(SALE);
-                content.Add(ID.ToString());
 
+                Technic editT = new Technic()
+                {
+                    Name = NamePos.Text,
+                    Model = Model.Text,
+                    Year = Year.Text,
+                    Type = Type.Text,
+                    
+                    Mass = Mass.Text,
+                    Text = TextInfo.Text,
+                    State = comboBox2.Text,
 
-                DB.insertToDB(Categories, ID, content);
+                    Price = zer,
+                    FildType = comboBox1.SelectedIndex,
+                    IDT = IDT,
+                    Sale = SALE,
+                    id = ID
+                };
+                DB.Technic.Add(editT);
+                DB.SaveChanges();
                 MessageBox.Show("upload is complete");
                 this.Close();
             }
@@ -75,46 +88,55 @@ namespace CMS_FOR_WEBSITE
         {
             if (Categories == 1)
             {
-                ID = int.Parse(DS.Tables["Machinery"].Rows[0][4].ToString());
-                IDM = DS.Tables["Machinery"].Rows[0][12].ToString();
-                SALE = DS.Tables["Machinery"].Rows[0][13].ToString();
-                NamePos.Text = DS.Tables["Machinery"].Rows[0][0].ToString();
-                Model.Text = DS.Tables["Machinery"].Rows[0][1].ToString();
-                Year.Text = DS.Tables["Machinery"].Rows[0][2].ToString();
-                Type.Text = DS.Tables["Machinery"].Rows[0][6].ToString();
-                Working_hours.Text = DS.Tables["Machinery"].Rows[0][7].ToString();
-                Power.Text = DS.Tables["Machinery"].Rows[0][8].ToString();
-                Mass.Text = DS.Tables["Machinery"].Rows[0][9].ToString();
-                comboBox2.Text = DS.Tables["Machinery"].Rows[0][11].ToString();
-                Price.Text = DS.Tables["Machinery"].Rows[0][3].ToString();
-                comboBox1.SelectedIndex = int.Parse(DS.Tables["Machinery"].Rows[0][5].ToString()) - 1;
-                TextInfo.Text = DS.Tables["Machinery"].Rows[0][10].ToString();
+                ID = machinery.id;
+                IDM = machinery.IDM;
+                SALE = machinery.Sale;
+                NamePos.Text = machinery.Name;
+                Model.Text = machinery.Model;
+                Year.Text = machinery.Year;
+                Type.Text = machinery.Type;
+                Working_hours.Text = machinery.Working_hours;
+                Power.Text = machinery.Power;
+                Mass.Text = machinery.Mass;
+                comboBox2.Text = machinery.State;
+                int zer = 0;
+                int.TryParse(machinery.Price.ToString(), out zer);
+                Price.Text = zer.ToString();
+                comboBox1.SelectedIndex = machinery.FildType;
+                TextInfo.Text = machinery.Text;
             }
             if (Categories == 2)
             {
                 label10.Visible = false;
                 label9.Visible = false;
                 Working_hours.Visible = false;
-                Power.Visible = false;  
-                NamePos.Text =  DS.Tables["Technic"].Rows[0][0].ToString();
-                Model.Text =    DS.Tables["Technic"].Rows[0][1].ToString();
-                Year.Text =     DS.Tables["Technic"].Rows[0][2].ToString();
-                Type.Text =     DS.Tables["Technic"].Rows[0][6].ToString();
-                TextInfo.Text = DS.Tables["Technic"].Rows[0][7].ToString();
-                Mass.Text =     DS.Tables["Technic"].Rows[0][8].ToString();
-               
-                Price.Text =    DS.Tables["Technic"].Rows[0][3].ToString();
-                comboBox2.Text =DS.Tables["Technic"].Rows[0][9].ToString();
-                IDT =           DS.Tables["Technic"].Rows[0][10].ToString();
-                comboBox1.SelectedIndex = int.Parse(DS.Tables["Technic"].Rows[0][5].ToString()) - 1;
-                SALE = DS.Tables["Technic"].Rows[0][11].ToString();
-                ID = int.Parse( DS.Tables["Technic"].Rows[0][4].ToString());
-              
-                
+                Power.Visible = false;
+                NamePos.Text = technic.Name;
+                Model.Text = technic.Model;
+                Year.Text = technic.Year;
+                Type.Text = technic.Type;
+                TextInfo.Text = technic.Text;
+                Mass.Text = technic.Mass;
+                int zer = 0;
+                int.TryParse(technic.Price.ToString(), out zer);
+                Price.Text = zer.ToString();
+
+                comboBox2.Text = technic.State;
+                IDT = technic.IDT;
+                comboBox1.SelectedIndex = technic.FildType;
+                SALE = technic.Sale;
+                ID = technic.id;
+
+
 
             }
 
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked) { Price.Enabled = false; Price.Text = ""; } else { Price.Enabled = true; }
         }
     }
 }

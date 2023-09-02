@@ -9,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 using CMS_FOR_WEBSITE;
 using CMS_FOR_WEBSITE.Models;
@@ -27,7 +28,9 @@ namespace CMS_FOR_WEBSITE
         ImageList img = new ImageList();
         dbConnect DBCON = new dbConnect(dbPath);
         List<FildType> fildTypes = new List<FildType>();
-        List<MachineryModel> machineries = new List<MachineryModel>();
+        List<Machinery> machineries = new List<Machinery>();
+        List<Technic> technicModels = new List<Technic>();
+
 
         string[] ImgName;
         string[] ImgNamePaths;
@@ -45,50 +48,41 @@ namespace CMS_FOR_WEBSITE
 
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
-            DBCON.FindByType(comboBox1.SelectedIndex.ToString(), Categories);
-            var sortByFildtype = (from f in machineries where f.FildType == comboBox1.SelectedIndex select f);
+            string selectedText = comboBox1.SelectedItem.ToString();
+            List<FildType> selectedFildTypes = (from s in fildTypes where s.FildTypeName == selectedText select s).ToList();
+
+
             if (Categories == 1)
             {
-                DataTable AllTr = DBCON.dataSet.Tables["Machinery"];
-                dataGridView1.DataSource = AllTr;
-
+                List<Machinery> sortByFildtype = (from f in machineries where f.FildType == selectedFildTypes[0].id select f).ToList();
+                dataGridView1.DataSource = sortByFildtype;
             }
             else if (Categories == 2)
             {
-                DataTable AllTr = DBCON.dataSet.Tables["Technic"];
-
-                dataGridView1.DataSource = AllTr;
-
+                List<Technic> sortByFildtype = (from f in technicModels where f.FildType == selectedFildTypes[0].id select f).ToList();
+                dataGridView1.DataSource = sortByFildtype;
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
-
-
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
-            DBCON.FindByName(textBox1.Text, Categories);
+
             if (Categories == 1)
             {
-                DataTable AllTr = DBCON.dataSet.Tables["Machinery"];
-                dataGridView1.DataSource = AllTr;
-
+                List<Machinery> sortByFildtype = (from f in machineries where f.Name.ToLower().Contains(textBox1.Text.ToLower()) select f).ToList();
+                dataGridView1.DataSource = sortByFildtype;
             }
             else if (Categories == 2)
             {
-                DataTable AllTr = DBCON.dataSet.Tables["Technic"];
-
-                dataGridView1.DataSource = AllTr;
-
+                List<Technic> sortByFildtype = (from f in technicModels where f.Name.ToLower().Contains(textBox1.Text.ToLower()) select f).ToList();
+                dataGridView1.DataSource = sortByFildtype;
             }
-
-
         }
 
         private void button5_Click(object sender, EventArgs e)
-        {
+        {/*
             button1.Visible = false;
             button4.Visible = false;
             List<string> listChenges = new List<string>();
@@ -199,7 +193,7 @@ namespace CMS_FOR_WEBSITE
             }
 
 
-
+            */
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
@@ -217,29 +211,29 @@ namespace CMS_FOR_WEBSITE
                 switch (DeleteIdFildType)
                 {
                     case 1:
-                        System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=M&id='" + DeleteId + "'#Back");
+                        Process.Start(new ProcessStartInfo { FileName = @"http://www.annaland.com.ua/SelectedMorT.php?techW=M&id='" + DeleteId + "'#Back", UseShellExecute = true });
                         break;
                     case 2:
-                        System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=S&id='" + DeleteId + "'#Back");
+                        Process.Start(new ProcessStartInfo { FileName = @"http://www.annaland.com.ua/SelectedMorT.php?techW=S&id='" + DeleteId + "'#Back", UseShellExecute = true });
                         break;
 
                     case 3:
-                        System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=Z&id='" + DeleteId + "'#Back");
+                        Process.Start(new ProcessStartInfo { FileName = @"http://www.annaland.com.ua/SelectedMorT.php?techW=Z&id='" + DeleteId + "'#Back", UseShellExecute = true });
                         break;
                     case 4:
-                        System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=P&id='" + DeleteId + "'#Back");
+                        Process.Start(new ProcessStartInfo { FileName = @"http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=P&id='" + DeleteId + "'#Back", UseShellExecute = true });
                         break;
                     case 5:
-                        System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=G&id='" + DeleteId + "'#Back");
+                        Process.Start(new ProcessStartInfo { FileName = @"http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=G&id='" + DeleteId + "'#Back", UseShellExecute = true });
                         break;
                     case 6:
-                        System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=PS&id='" + DeleteId + "'#Back");
+                        Process.Start(new ProcessStartInfo { FileName = @"http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=PS&id='" + DeleteId + "'#Back", UseShellExecute = true });
                         break;
                     case 7:
-                        System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=I&id='" + DeleteId + "'#Back");
+                        Process.Start(new ProcessStartInfo { FileName = @"http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=I&id='" + DeleteId + "'#Back", UseShellExecute = true });
                         break;
                     case 8:
-                        System.Diagnostics.Process.Start("http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=O&id='" + DeleteId + "'#Back");
+                        Process.Start(new ProcessStartInfo { FileName = @"http://www.annaland.com.ua/SelectedMorT.php?techW=T&typeW=O&id='" + DeleteId + "'#Back", UseShellExecute = true });
                         break;
                 }
 
@@ -249,7 +243,6 @@ namespace CMS_FOR_WEBSITE
 
         private void button4_Click(object sender, EventArgs e)
         {
-
             Edite EditForm = new Edite();
 
             if (Categories == 1)
@@ -261,13 +254,18 @@ namespace CMS_FOR_WEBSITE
                     string cellValue = Convert.ToString(selectedRow.Cells["id"].Value);
                     DeleteId = int.Parse(cellValue);
                 }
-                DBCON.editeDB(Categories, DeleteId);
+                Machinery machinery = new Machinery();
 
-                EditForm.DS = DBCON.dataSet;
+                for (int i = 0; i < machineries.Count; i++)
+                {
+                    if (machineries[i].id == DeleteId)
+                    {
+                        machinery = machineries[i];
+                    }
+                }
+                EditForm.machinery = machinery;
                 EditForm.Categories = Categories;
-                DBCON.dataSet.Dispose();
                 EditForm.Show();
-                this.Close();
 
             }
             else if (Categories == 2)
@@ -279,13 +277,20 @@ namespace CMS_FOR_WEBSITE
                     string cellValue = Convert.ToString(selectedRow.Cells["id"].Value);
                     DeleteId = int.Parse(cellValue);
                 }
-                DBCON.editeDB(Categories, DeleteId);
+                Technic technic = new Technic();
 
-                EditForm.DS = DBCON.dataSet;
+                for (int i = 0; i < machineries.Count; i++)
+                {
+                    if (technicModels[i].id == DeleteId)
+                    {
+                        technic = technicModels[i];
+                    }
+                }
+
+                EditForm.technic = technic;
                 EditForm.Categories = Categories;
-                DBCON.dataSet.Dispose();
                 EditForm.Show();
-                this.Close();
+
             }
 
 
@@ -298,8 +303,10 @@ namespace CMS_FOR_WEBSITE
 
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
-            fildTypes = DBCON.FildType.ToList();
+
             machineries = DBCON.Machinery.ToList();
+            technicModels = DBCON.Technic.ToList();
+            fildTypes = DBCON.FildType.ToList();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -308,11 +315,12 @@ namespace CMS_FOR_WEBSITE
             button4.Visible = true;
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
-            DBCON.getCategories(2);
-            DataTable AllTr = DBCON.dataSet.Tables["Technic"
-            dataGridView1.DataSource = ;
-            Categories = 2;
 
+            DBCON = new dbConnect(dbPath);
+            technicModels.Clear();
+            technicModels = DBCON.Technic.ToList();
+            dataGridView1.DataSource = technicModels;
+            Categories = 2;
             string[] installs = new string[] { "Картопляна техніка", "Техніка для обробка грунту", "Посівна та садильна техніка", "Техніка для внесення добрив", "Інша техніка" };
             comboBox1.Items.Clear();
             comboBox1.Items.AddRange(installs);
@@ -326,42 +334,72 @@ namespace CMS_FOR_WEBSITE
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
 
-
-            
+            DBCON = new dbConnect(dbPath);
+            machineries.Clear();
+            machineries = DBCON.Machinery.ToList();
             dataGridView1.DataSource = machineries;
             Categories = 1;
-            string[] installs = new string[] { "Трактори", "Спецтехніка" };
+            string[] installs = new string[] { "Трактори", "Спецтехніка", "Збиральна техніка" };
             comboBox1.Items.Clear();
             comboBox1.Items.AddRange(installs);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            button1.Visible = false;
-            button4.Visible = false;
+             button1.Visible = false;
+             button4.Visible = false;
 
-            if (dataGridView1.SelectedCells.Count > 0)
-            {
-                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-                string cellValue = Convert.ToString(selectedRow.Cells["id"].Value);
-                DeleteId = int.Parse(cellValue);
-            }
-            if (Categories == 1)
-            {
-                DBCON.deleteFromDB(Categories, DeleteId);
+             if (dataGridView1.SelectedCells.Count > 0)
+             {
+                 int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                 DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                 string cellValue = Convert.ToString(selectedRow.Cells["id"].Value);
+                 DeleteId = int.Parse(cellValue);
+             }
+             if (Categories == 1)
+             {
+                var delM = (from a in machineries where a.id == DeleteId select a).ToList(); ;
+                DBCON.Machinery.Remove(delM[0]);
+                DBCON.SaveChanges();
                 dataGridView1.DataSource = null;
                 dataGridView1.Refresh();
                 this.Refresh();
             }
-            else if (Categories == 2)
-            {
-                DBCON.deleteFromDB(Categories, DeleteId);
+             else if (Categories == 2)
+             {
+                var delT = (from a in technicModels where a.id == DeleteId select a).ToList(); ;
+                DBCON.Technic.Remove(delT[0]);
+                DBCON.SaveChanges();
                 dataGridView1.DataSource = null;
-                dataGridView1.Refresh();
-                this.Refresh();
-            }
+                 dataGridView1.Refresh();
+                 this.Refresh();
+             }
         }
 
+        private void Delete_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Delete_Activated(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.Refresh();
+            if (Categories == 1)
+            {
+                DBCON = new dbConnect(dbPath);
+                machineries.Clear();
+                machineries = DBCON.Machinery.ToList();
+                dataGridView1.DataSource = machineries;
+            }
+            else if(Categories == 2)
+            {
+                DBCON = new dbConnect(dbPath);
+                technicModels.Clear();
+                technicModels = DBCON.Technic.ToList();
+                dataGridView1.DataSource = technicModels;
+            }
+            
+        }
     }
 }

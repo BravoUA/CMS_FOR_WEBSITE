@@ -14,10 +14,10 @@ namespace CMS_FOR_WEBSITE
     class dbConnect:DbContext
     {
         private string Path;
-        public DbSet<MachineryModel> Machinery { get; set; }
+        public DbSet<Machinery> Machinery { get; set; }
         public DbSet<HadImgPath> HadImgPath { get; set; }
         public DbSet<HadImgPathT> HadImgPathT { get; set; }
-        public DbSet<TechnicModel> TechnicModel { get; set; }
+        public DbSet<Technic> Technic { get; set; }
         public DbSet<TechnicImg> TechnicImg { get; set; }
         public DbSet<MachinesImg> MachinesImg { get; set; }
         public DbSet<FildType> FildType { get; set; }
@@ -30,7 +30,7 @@ namespace CMS_FOR_WEBSITE
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlite("DataSource="+Path+"ALDB.db;");
+            optionsBuilder.UseSqlite("DataSource="+Path+"");
         }
 
     }

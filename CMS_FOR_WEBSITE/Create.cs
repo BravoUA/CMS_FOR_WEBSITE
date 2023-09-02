@@ -2,9 +2,9 @@ using System.Windows.Forms;
 
 namespace CMS_FOR_WEBSITE
 {
-    public partial class Form1 : Form
+    public partial class Create : Form
     {
-        public Form1()
+        public Create()
         {
             InitializeComponent();
         }
@@ -79,7 +79,7 @@ namespace CMS_FOR_WEBSITE
                 {
                     IMGSPath.Add("/img/imges/" + ImgName[i]);
                 }
-                dbConnect.CreateNew(1, content, webimgpath, IMGSPath, ImgName);
+             //   dbConnect.CreateNew(1, content, webimgpath, IMGSPath, ImgName);
 
                 string[] webimgpath2 = { HadImgPath, HadImg };
 
@@ -109,7 +109,7 @@ namespace CMS_FOR_WEBSITE
                 {
                     IMGSPath.Add("/img/imges/" + ImgName[i]);
                 }
-                dbConnect.CreateNew(2, content, webimgpath, IMGSPath, ImgName);
+               // dbConnect.CreateNew(2, content, webimgpath, IMGSPath, ImgName);
 
                 string[] webimgpath2 = { HadImgPath, HadImg };
                 ftpConnect.UploadFilesIMG(webimgpath2, ImgNamePaths, ImgName);

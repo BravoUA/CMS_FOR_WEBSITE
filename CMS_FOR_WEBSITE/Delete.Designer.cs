@@ -183,7 +183,9 @@ namespace CMS_FOR_WEBSITE
             Margin = new Padding(4, 3, 4, 3);
             Name = "Delete";
             StartPosition = FormStartPosition.CenterScreen;
+            Activated += Delete_Activated;
             Load += Delete_Load;
+            VisibleChanged += Delete_VisibleChanged;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
