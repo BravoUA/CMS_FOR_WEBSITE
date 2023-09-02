@@ -362,8 +362,12 @@ namespace CMS_FOR_WEBSITE
                 DBCON.Machinery.Remove(delM[0]);
                 DBCON.SaveChanges();
                 dataGridView1.DataSource = null;
+                
                 dataGridView1.Refresh();
-                this.Refresh();
+                DBCON = new dbConnect(dbPath);
+                machineries.Clear();
+                machineries = DBCON.Machinery.ToList();
+                dataGridView1.DataSource = machineries;
             }
              else if (Categories == 2)
              {
@@ -371,9 +375,13 @@ namespace CMS_FOR_WEBSITE
                 DBCON.Technic.Remove(delT[0]);
                 DBCON.SaveChanges();
                 dataGridView1.DataSource = null;
-                 dataGridView1.Refresh();
-                 this.Refresh();
-             }
+                dataGridView1.Refresh();
+
+                DBCON = new dbConnect(dbPath);
+                technicModels.Clear();
+                technicModels = DBCON.Technic.ToList();
+                dataGridView1.DataSource = technicModels;
+            }
         }
 
         private void Delete_VisibleChanged(object sender, EventArgs e)
