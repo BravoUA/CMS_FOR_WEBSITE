@@ -21,7 +21,6 @@ namespace CMS_FOR_WEBSITE
         string login;
         string paswword;
         string host;
-
         private void button1_Click(object sender, EventArgs e)
         {
             Create form = new Create();
