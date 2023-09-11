@@ -21,6 +21,7 @@ namespace CMS_FOR_WEBSITE
         public DbSet<TechnicImg> TechnicImg { get; set; }
         public DbSet<MachinesImg> MachinesImg { get; set; }
         public DbSet<FildType> FildType { get; set; }
+        public DbSet<NameofFirm> NameofFirm { get; set; }
 
         public dbConnect(DbContextOptions<dbConnect> options) : base(options)
         {

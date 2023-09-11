@@ -40,6 +40,7 @@ namespace CMS_FOR_WEBSITE
             textBox1 = new TextBox();
             label1 = new Label();
             comboBox1 = new ComboBox();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -163,6 +164,16 @@ namespace CMS_FOR_WEBSITE
             comboBox1.TabIndex = 10;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
+            // button6
+            // 
+            button6.Location = new Point(1173, 405);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 11;
+            button6.Text = "button6";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // Delete
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -170,6 +181,7 @@ namespace CMS_FOR_WEBSITE
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.SkyBlue;
             ClientSize = new Size(1274, 585);
+            Controls.Add(button6);
             Controls.Add(comboBox1);
             Controls.Add(label1);
             Controls.Add(textBox1);
@@ -201,5 +213,6 @@ namespace CMS_FOR_WEBSITE
         private TextBox textBox1;
         private Label label1;
         private ComboBox comboBox1;
+        private Button button6;
     }
 }

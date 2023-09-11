@@ -109,7 +109,6 @@
             Login.Name = "Login";
             Login.Size = new Size(245, 23);
             Login.TabIndex = 5;
-            Login.Text = "sa246943_CMS";
             // 
             // Paswword
             // 
@@ -118,7 +117,6 @@
             Paswword.Name = "Paswword";
             Paswword.Size = new Size(245, 23);
             Paswword.TabIndex = 6;
-            Paswword.Text = "9uJ5a4tNV2";
             // 
             // Host
             // 
@@ -127,7 +125,6 @@
             Host.Name = "Host";
             Host.Size = new Size(245, 23);
             Host.TabIndex = 7;
-            Host.Text = "sa246943.ftp.tools";
             // 
             // button3
             // 

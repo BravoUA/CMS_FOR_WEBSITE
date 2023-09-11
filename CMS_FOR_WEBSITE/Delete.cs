@@ -346,31 +346,31 @@ namespace CMS_FOR_WEBSITE
 
         private void button1_Click(object sender, EventArgs e)
         {
-             button1.Visible = false;
-             button4.Visible = false;
+            button1.Visible = false;
+            button4.Visible = false;
 
-             if (dataGridView1.SelectedCells.Count > 0)
-             {
-                 int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-                 DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-                 string cellValue = Convert.ToString(selectedRow.Cells["id"].Value);
-                 DeleteId = int.Parse(cellValue);
-             }
-             if (Categories == 1)
-             {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                string cellValue = Convert.ToString(selectedRow.Cells["id"].Value);
+                DeleteId = int.Parse(cellValue);
+            }
+            if (Categories == 1)
+            {
                 var delM = (from a in machineries where a.id == DeleteId select a).ToList(); ;
                 DBCON.Machinery.Remove(delM[0]);
                 DBCON.SaveChanges();
                 dataGridView1.DataSource = null;
-                
+
                 dataGridView1.Refresh();
                 DBCON = new dbConnect(dbPath);
                 machineries.Clear();
                 machineries = DBCON.Machinery.ToList();
                 dataGridView1.DataSource = machineries;
             }
-             else if (Categories == 2)
-             {
+            else if (Categories == 2)
+            {
                 var delT = (from a in technicModels where a.id == DeleteId select a).ToList(); ;
                 DBCON.Technic.Remove(delT[0]);
                 DBCON.SaveChanges();
@@ -400,14 +400,21 @@ namespace CMS_FOR_WEBSITE
                 machineries = DBCON.Machinery.ToList();
                 dataGridView1.DataSource = machineries;
             }
-            else if(Categories == 2)
+            else if (Categories == 2)
             {
                 DBCON = new dbConnect(dbPath);
                 technicModels.Clear();
                 technicModels = DBCON.Technic.ToList();
                 dataGridView1.DataSource = technicModels;
             }
-            
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Create Create = new Create();
+            Create.Show();
+
         }
     }
 }
